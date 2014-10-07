@@ -50,7 +50,9 @@
     [super viewWillAppear:animated];
     
     // Scroll to bottom
-    if (self.isMovingToParentViewController && !self.disableScrollToBottom) {
+    NSNumber *propertyTypeNumber = [self.assetsGroup valueForProperty:ALAssetsGroupPropertyType];
+    ALAssetsGroupType propertyType = (ALAssetsGroupType)[propertyTypeNumber unsignedIntegerValue];
+    if (propertyType == ALAssetsGroupSavedPhotos && self.isMovingToParentViewController && !self.disableScrollToBottom) {
         CGFloat topInset;
         if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) { // iOS7 or later
             topInset = ((self.edgesForExtendedLayout && UIRectEdgeTop) && (self.collectionView.contentInset.top == 0)) ? (20.0 + 44.0) : 0.0;
