@@ -88,6 +88,19 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     
     // Register cell classes
     [self.tableView registerClass:[QBImagePickerGroupCell class] forCellReuseIdentifier:@"GroupCell"];
+    
+    // Register a notification.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didChangeAssetsLibrary:)
+                                                 name:ALAssetsLibraryChangedNotification
+                                               object:self.assetsLibrary];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:ALAssetsLibraryChangedNotification
+                                                  object:self.assetsLibrary];
 }
 
 - (void)viewDidLoad
@@ -113,7 +126,6 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     // Validation
     self.navigationItem.rightBarButtonItem.enabled = [self validateNumberOfSelections:self.selectedAssetURLs.count];
 }
-
 
 #pragma mark - Accessors
 
@@ -361,6 +373,25 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
 - (void)assetsCollectionViewControllerDidFinishSelection:(QBAssetsCollectionViewController *)assetsCollectionViewController
 {
     [self passSelectedAssetsToDelegate];
+}
+
+
+#pragma mark - Notification
+
+- (void)didChangeAssetsLibrary:(NSNotification *)notification
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    // Load assets groups
+    [self loadAssetsGroupsWithTypes:self.groupTypes
+                         completion:^(NSArray *assetsGroups) {
+                             self.assetsGroups = assetsGroups;
+                             
+                             [self.tableView reloadData];
+                         }];
+    
+    // Validation
+    self.navigationItem.rightBarButtonItem.enabled = [self validateNumberOfSelections:self.selectedAssetURLs.count];
 }
 
 @end
