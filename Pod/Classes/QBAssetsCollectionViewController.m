@@ -295,7 +295,23 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(77.5, 77.5);
+    static CGSize size;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // Supports iPhone 6 and 6 Plus screen sizes for UIUserInterfaceIdiomPhone.
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+            CGSize screenSize = [UIScreen mainScreen].bounds.size; // iOS 8 returns a rotated bounds.
+            CGFloat screenWidth = MIN(screenSize.width, screenSize.height);
+            CGFloat space = 2.0;
+            NSUInteger columns = 4;
+            CGFloat thumnailSize = (CGFloat)floor((screenWidth - (columns + 1) * space) / columns);
+            size = CGSizeMake(thumnailSize, thumnailSize + space);
+        }
+        else {
+            size = CGSizeMake(77.5, 77.5);
+        }
+    });
+    return size;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
