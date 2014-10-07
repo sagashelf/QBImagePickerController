@@ -43,5 +43,6 @@ UIKIT_EXTERN ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterTyp
 @property (nonatomic, assign) NSUInteger maximumNumberOfSelection;
 
 + (BOOL)isAccessible;
+- (void)clear;
 
 @end

@@ -287,6 +287,12 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     }
 }
 
+- (void)clear
+{
+    [self.selectedAssetURLs removeAllObjects];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
 
 #pragma mark - UITableViewDataSource
 
