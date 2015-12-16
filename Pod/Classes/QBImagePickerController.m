@@ -16,6 +16,8 @@
 // ViewControllers
 #import "QBAssetsCollectionViewController.h"
 
+#import "QBLocalizations.h"
+
 ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePickerControllerFilterType type) {
     switch (type) {
         case QBImagePickerControllerFilterTypeNone:
@@ -108,7 +110,7 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     [super viewDidLoad];
     
     // View controller settings
-    self.title = NSLocalizedStringFromTable(@"title", @"QBImagePickerController", nil);
+    self.title = QBLocalizedString(@"title");
 }
 
 - (void)viewWillAppear:(BOOL)animated
