@@ -162,7 +162,24 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
 
 - (void)done:(id)sender
 {
-    [self passSelectedAssetsToDelegate];
+    if (self.showsCancelButton)
+    {
+        [self passSelectedAssetsToDelegate];
+    }
+    else
+    {
+        if (self.selectedAssetURLs.count == 0)
+        {
+            if ([self.delegate respondsToSelector:@selector(qb_imagePickerControllerDidCancel:)])
+            {
+                [self.delegate qb_imagePickerControllerDidCancel:self];
+            }
+        }
+        else
+        {
+            [self passSelectedAssetsToDelegate];
+        }
+    }
 }
 
 - (void)cancel:(id)sender
