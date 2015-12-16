@@ -179,11 +179,10 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
 - (BOOL)validateNumberOfSelections:(NSUInteger)numberOfSelections
 {
     // Check the number of selected assets
-    NSUInteger minimumNumberOfSelection = MAX(1, self.minimumNumberOfSelection);
-    BOOL qualifiesMinimumNumberOfSelection = (numberOfSelections >= minimumNumberOfSelection);
+    BOOL qualifiesMinimumNumberOfSelection = (numberOfSelections >= self.minimumNumberOfSelection);
     
     BOOL qualifiesMaximumNumberOfSelection = YES;
-    if (minimumNumberOfSelection <= self.maximumNumberOfSelection) {
+    if (self.minimumNumberOfSelection <= self.maximumNumberOfSelection) {
         qualifiesMaximumNumberOfSelection = (numberOfSelections <= self.maximumNumberOfSelection);
     }
     
