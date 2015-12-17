@@ -36,6 +36,9 @@
         // View settings
         self.collectionView.backgroundColor = [UIColor whiteColor];
         
+        self.maximumNumberOfSelection = INT_MAX;
+        self.minimumNumberOfSelection = 0;
+        
         // Register cell class
         [self.collectionView registerClass:[QBAssetsCollectionViewCell class]
                 forCellWithReuseIdentifier:@"AssetsCell"];
@@ -187,11 +190,10 @@
 
 - (BOOL)validateNumberOfSelections:(NSUInteger)numberOfSelections
 {
-    NSUInteger minimumNumberOfSelection = MAX(1, self.minimumNumberOfSelection);
-    BOOL qualifiesMinimumNumberOfSelection = (numberOfSelections >= minimumNumberOfSelection);
+    BOOL qualifiesMinimumNumberOfSelection = (numberOfSelections >= self.minimumNumberOfSelection);
     
     BOOL qualifiesMaximumNumberOfSelection = YES;
-    if (minimumNumberOfSelection <= self.maximumNumberOfSelection) {
+    if (self.minimumNumberOfSelection <= self.maximumNumberOfSelection) {
         qualifiesMaximumNumberOfSelection = (numberOfSelections <= self.maximumNumberOfSelection);
     }
     

@@ -70,6 +70,8 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
 
 - (void)setUpProperties
 {
+    self.maximumNumberOfSelection = INT_MAX;
+    self.minimumNumberOfSelection = 0;
     // Property settings
     self.selectedAssetURLs = [NSMutableOrderedSet orderedSet];
     
@@ -424,7 +426,24 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
 
 - (void)assetsCollectionViewControllerDidFinishSelection:(QBAssetsCollectionViewController *)assetsCollectionViewController
 {
-    [self passSelectedAssetsToDelegate];
+    if (self.showsCancelButton)
+    {
+        [self passSelectedAssetsToDelegate];
+    }
+    else
+    {
+        if (self.selectedAssetURLs.count == 0)
+        {
+            if ([self.delegate respondsToSelector:@selector(qb_imagePickerControllerDidCancel:)])
+            {
+                [self.delegate qb_imagePickerControllerDidCancel:self];
+            }
+        }
+        else
+        {
+            [self passSelectedAssetsToDelegate];
+        }
+    }
 }
 
 
