@@ -1,0 +1,18 @@
+/* 
+  QBImagePickerController.strings
+  QBImagePickerControllerDemo
+
+  Created by Tanaka Katsuma on 2014/01/01.
+  Copyright (c) 2014年 Katsuma Tanaka. All rights reserved.
+*/
+
+"title" = "Bilder";
+
+"format_photo" = "%ld Bilde";
+"format_photos" = "%ld Bilder";
+"format_video" = "%ld Video";
+"format_videos" = "%ld Videoer";
+"format_photo_and_video" = "%ld Bilde, %ld Video";
+"format_photos_and_video" = "%ld Bilder, %ld Video";
+"format_photo_and_videos" = "%ld Bilde, %ld Videoer";
+"format_photos_and_videos" = "%ld Bilder, %ld Videoer";

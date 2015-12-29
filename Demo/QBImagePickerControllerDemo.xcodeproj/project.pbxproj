@@ -51,6 +51,7 @@
 /* Begin PBXFileReference section */
 		0BF5FF911C2162AD00FFEFFF /* QBLocalizations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBLocalizations.h; path = ../../Pod/Classes/QBLocalizations.h; sourceTree = "<group>"; };
 		0BF5FF921C2162AD00FFEFFF /* QBLocalizations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QBLocalizations.m; path = ../../Pod/Classes/QBLocalizations.m; sourceTree = "<group>"; };
+		95A3AF761C333FD300E75905 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/QBImagePickerController.strings; sourceTree = "<group>"; };
 		98138F6219E3CC5F008C775F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		AA5F3BFD1871A826009738C1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		AAB63B1119932F93005BE2E8 /* QBAssetsCollectionCheckmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBAssetsCollectionCheckmarkView.h; path = ../../Pod/Classes/QBAssetsCollectionCheckmarkView.h; sourceTree = "<group>"; };
@@ -315,6 +316,7 @@
 				en,
 				Base,
 				ja,
+				nb,
 			);
 			mainGroup = AAD64EB018710798004C3AD5;
 			productRefGroup = AAD64EBA18710798004C3AD5 /* Products */;
@@ -397,6 +399,7 @@
 			children = (
 				AAB63B2F19932FAA005BE2E8 /* en */,
 				AAB63B3019932FAA005BE2E8 /* ja */,
+				95A3AF761C333FD300E75905 /* nb */,
 			);
 			name = QBImagePickerController.strings;
 			sourceTree = "<group>";
