@@ -144,7 +144,7 @@
     
     // Show/hide done button
     if (allowsMultipleSelection) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:QBLocalizedString(@"Done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
         [self.navigationItem setRightBarButtonItem:doneButton animated:NO];
     } else {
         [self.navigationItem setRightBarButtonItem:nil animated:NO];

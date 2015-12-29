@@ -139,7 +139,7 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     
     // Show/hide cancel button
     if (showsCancelButton) {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:QBLocalizedString(@"Cancel") style:UIBarButtonItemStylePlain target:self action:@selector(cancel:)];
         [self.navigationItem setLeftBarButtonItem:cancelButton animated:NO];
     } else {
         [self.navigationItem setLeftBarButtonItem:nil animated:NO];
@@ -152,7 +152,7 @@ ALAssetsFilter * ALAssetsFilterFromQBImagePickerControllerFilterType(QBImagePick
     
     // Show/hide done button
     if (allowsMultipleSelection) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:QBLocalizedString(@"Done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
         [self.navigationItem setRightBarButtonItem:doneButton animated:NO];
     } else {
         [self.navigationItem setRightBarButtonItem:nil animated:NO];
